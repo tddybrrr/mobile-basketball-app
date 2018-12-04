@@ -1,5 +1,7 @@
 <template>
-    <div class="chat">
-        <h1>CHATS CHATS CHATS </h1>
-    </div>
+    <v-content class="chat">
+        <v-container>
+            <h1>CHATTTTTTS</h1>
+        </v-container>
+    </v-content>
 </template>

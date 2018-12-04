@@ -1,10 +1,11 @@
 <template>
   <div class="matchups">
     <h1>here are today's matchups </h1>
-  <div :v-for"team in aTester">
+
       <MatchupCard homeTeam="wow" awayTeam="really"> </MatchupCard>
-  </div>
-   
+      <MatchupCard homeTeam="wow" awayTeam="really"> </MatchupCard>
+      <MatchupCard homeTeam="wow" awayTeam="really"> </MatchupCard>
+
   </div>
 </template>
 
@@ -16,7 +17,7 @@ export default {
   data(){
     return{
       coolString: "cool",
-      cardLimit: 10
+      maxList: 5
     }
   },
   computed:{
