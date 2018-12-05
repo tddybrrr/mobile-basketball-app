@@ -54,7 +54,7 @@ export default {
 td, th{
   border: solid 1px black;
   border-radius: 10px;
-     width: 200px;
+  width: 200px;
 }
 
 .playOffs{

@@ -1,11 +1,11 @@
 <template>
     <div class="navigation">
         <v-content>
-           <v-container>
-                    <v-btn outline round to="/" >Matchups</v-btn>
+               <v-card dark>
+                    <v-btn dark="true" outline round to="/" >Matchups</v-btn>
                     <v-btn outline round to="/standings">Standings</v-btn>
-                    <v-btn  outline round to="/chat" >Chat</v-btn>             
-            </v-container>
+                    <v-btn  outline round to="/chat" >Chat</v-btn>  
+                </v-card>           
         </v-content>
     </div>
 </template>
@@ -19,14 +19,10 @@
 <style>
 .navigation{
     position:fixed;
-    bottom: 1px;
+    bottom: 0px;
+    width: 100%;
 }
-.navy{
-    display: flex;
-    flex: row;
+.tryme{
+    background-color: pink;
 }
-v-btn{
-    color: red;
-}
-
 </style>

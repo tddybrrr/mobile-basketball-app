@@ -1,44 +1,65 @@
 <template>
     <div class="matchupCard">
+       
+    <v-card>
         <div class="box">
             <div class="logo">
-                <v-avatar size="50">
-                    <img :src="homeLogo" alt="homeLogo">
-                </v-avatar>
-                <p>{{homeTeam}}</p>
+                <v-avatar size=55>
+                    <img :src="homerLogo" alt="homeLogo">
+            </v-avatar>
+                <p>{{matchupsFromMatchups.schedule.homeTeam.abbreviation}}</p>
             </div>
             <div class="date">
-                <p>{{venue}}</p>
-                <p>{{gameTime}}</p>
+                <p>{{matchupsFromMatchups.schedule.venue.name}}</p>
+                <p>{{matchupsFromMatchups.schedule.startTime | readableDate }}</p>
+                <p>{{matchupsFromMatchups.schedule.startTime | readableTime }}</p>
             </div>
             <div class="logo">
-                <v-avatar size="50">
+                <v-avatar size=55>
                     <img :src="awayLogo" alt="awayLogo">
                 </v-avatar>
-                <p>{{awayTeam}}</p>
-
+                <p>{{matchupsFromMatchups.schedule.awayTeam.abbreviation}}</p>
             </div>
-            <!-- <div>
-                    <p>{{this.nbaTeams.teams[0].imgURL}}</p>
-            </div> -->
-          
         </div>
+   </v-card>
+   
     </div>
-
 </template>
 
 <script>
-import nbaTeams from '@/assets/nba-teams.json'
+import nbaTeams from '@/assets/nbaTeams.json'
     export default {
-        
         name: 'MatchupCard',
-        props: ['homeTeam', 'homeLogo', 'awayLogo', 'awayTeam', 'gameTime', 'venue', ''],
+        props: ['matchupsFromMatchups'],
         data() {
             return {
-                nbaTeams
+              homerLogo: '',
+              awayLogo: ''
             }
-        }
-    }
+        },
+        mounted(){
+            for (var i=0; i<30; i++){
+                if(this.matchupsFromMatchups.schedule.homeTeam.abbreviation == nbaTeams.teams[i].abbrev){
+                   this.homerLogo=nbaTeams.teams[i].imgURL
+                } else if(this.matchupsFromMatchups.schedule.awayTeam.abbreviation == nbaTeams.teams[i].abbrev){
+                   this.awayLogo=nbaTeams.teams[i].imgURL
+                }
+            }      
+        },
+        filters: {
+            readableDate: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return value.slice(0,10) 
+            },
+            readableTime: function (value) {
+                if (!value) return ''
+                value = value.toString()
+                return  value.slice(11,19) + "CET"
+            }
+        }   
+      
+}
 </script>
 
 
@@ -46,9 +67,27 @@ import nbaTeams from '@/assets/nba-teams.json'
     .box {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
-        border: solid 2px black;
-        border-radius: 11px;
-        margin-top: 10px;
+        justify-content: space-around;
+        align-items: center;
+        margin: 5px 5px;
     }
+  
+ 
+    img{
+        border: solid 3px black;
+        padding: 2px;
+   }
+    .logo{
+        display: flex;
+        flex-direction: column;
+        flex-flow: column-reverse;
+       
+    }
+    .date{
+        display: flex;
+        flex-direction: column;
+        height: 100px;
+    }
+
+
 </style>
