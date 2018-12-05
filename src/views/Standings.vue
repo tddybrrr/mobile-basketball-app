@@ -1,13 +1,11 @@
 <template>
   <v-content class="standings">
     <v-container>
-      <h1>HERE ARE SOME STANDINGS BOI</h1>
-      <ul v-for="each in currentStandings" :key="each.id">
-          <li>{{each.team.city}} {{each.overallRank.rank}}</li>
-      </ul>
-      
-    
-   
+      <h1 class="display-2">Season Standings (2018-2019) </h1>
+      <p> Team Name (current ranking)</p>
+      <div class="rankings" v-for="one in rankedTeams" :key="one.id">
+          <p>{{one.team.city}} ( {{one.overallRank.rank}} )</p>
+      </div>
     </v-container>
        <NavBar/>
   </v-content>
@@ -24,6 +22,13 @@ export default {
   components:{
     NavBar
   },
+  computed:{
+      rankedTeams: function(){
+        return this.currentStandings.sort(function(a,b){
+          return a.overallRank.rank - b.overallRank.rank
+        })
+      }
+  },
   mounted(){
     fetch('https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/standings.json', {
             method: 'GET',
@@ -35,14 +40,30 @@ export default {
             return test.json();
         })
         .then(standingData => {
+          console.log(standingData.teams)
           this.currentStandings=standingData.teams
-
-            for (var i = 0; i < standingData.teams.length; i++) {
-                console.log(standingData.teams[i].team.city + " " + standingData.teams[i].overallRank.rank)
-            }
         }).catch(error => console.log(error));
   }
 }
 </script>
+
+<style>
+.tableZone{
+  float: right;
+}
+td, th{
+  border: solid 1px black;
+  border-radius: 10px;
+     width: 200px;
+}
+
+.playOffs{
+  background-color: red;
+}
+.standings{
+  text-align: center;
+}
+
+</style>
 
 
