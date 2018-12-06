@@ -1,7 +1,10 @@
 <template>
     <div class="matchupCard">
-       
-    <v-card>
+<v-hover>
+    <v-card
+    slot-scope="{ hover }"
+    :class="`elevation-${hover ? 12 : 2}`"
+    >
         <div class="box">
             <div class="logo">
                 <v-avatar size=55>
@@ -22,7 +25,7 @@
             </div>
         </div>
    </v-card>
-   
+   </v-hover>
     </div>
 </template>
 
@@ -71,8 +74,6 @@ import nbaTeams from '@/assets/nbaTeams.json'
         align-items: center;
         margin: 5px 5px;
     }
-  
- 
     img{
         border: solid 3px black;
         padding: 2px;

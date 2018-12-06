@@ -2,17 +2,17 @@
   <div class="matchups">
       <v-container>
         <v-card>
-        <h1 class="display-2">Today's Matchups </h1>
+          <h1 class="display-5">Today's Matchups </h1>
         </v-card>
-               <v-card color="cyan">
-                       <v-container>
-                <div v-for="(eachMatchup, index) in todaysMatchups" :key="index">
-                        <MatchupCard :matchupsFromMatchups="eachMatchup">
-                    </MatchupCard>
-                    
-                </div>
-                 </v-container>
-           </v-card>
+        <v-card color="cyan">
+          <v-container>
+            <div v-for="(eachMatchup, index) in todaysMatchups" :key="index">
+              <MatchupCard :matchupsFromMatchups="eachMatchup">
+              </MatchupCard>
+                          
+            </div>
+          </v-container>
+        </v-card>
       </v-container>
       <NavBar/>
   </div>
@@ -67,7 +67,4 @@ export default {
    text-align: center;
 }
 
-div.box:hover{
-    background-color: rgb(187, 212, 212);
-}
 </style>

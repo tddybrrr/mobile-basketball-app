@@ -2,7 +2,7 @@
     <div class="navigation">
         <v-content>
                <v-card dark>
-                    <v-btn dark="true" outline round to="/" >Matchups</v-btn>
+                    <v-btn  outline round to="/" >Matchups</v-btn>
                     <v-btn outline round to="/standings">Standings</v-btn>
                     <v-btn  outline round to="/chat" >Chat</v-btn>  
                 </v-card>           
@@ -21,8 +21,7 @@
     position:fixed;
     bottom: 0px;
     width: 100%;
+    border-top: solid 5px #00BCD4;
 }
-.tryme{
-    background-color: pink;
-}
+
 </style>
