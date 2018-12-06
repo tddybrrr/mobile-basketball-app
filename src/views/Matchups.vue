@@ -1,15 +1,13 @@
 <template>
   <div class="matchups">
       <v-container>
-        <v-card>
+        <v-card class="mb-1">
           <h1 class="display-5">Today's Matchups </h1>
         </v-card>
         <v-card color="cyan">
           <v-container>
             <div v-for="(eachMatchup, index) in todaysMatchups" :key="index">
-              <MatchupCard :matchupsFromMatchups="eachMatchup">
-              </MatchupCard>
-                          
+              <MatchupCard :matchupsFromMatchups="eachMatchup"> </MatchupCard>
             </div>
           </v-container>
         </v-card>

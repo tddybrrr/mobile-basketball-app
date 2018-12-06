@@ -1,10 +1,10 @@
 <template>
     <div class="navigation">
         <v-content>
-               <v-card dark>
-                    <v-btn  outline round to="/" >Matchups</v-btn>
-                    <v-btn outline round to="/standings">Standings</v-btn>
-                    <v-btn  outline round to="/chat" >Chat</v-btn>  
+               <v-card class="black" >
+                    <v-btn  class="cyan--text" outline round to="/" >Matchups</v-btn>
+                    <v-btn class="cyan--text" outline round to="/standings">Standings</v-btn>
+                    <v-btn  class="cyan--text" outline round to="/chat" >Chat</v-btn>  
                 </v-card>           
         </v-content>
     </div>
