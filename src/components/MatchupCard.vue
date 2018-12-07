@@ -10,7 +10,7 @@
                 <v-avatar size=55>
                     <img :src="homerLogo" alt="homeLogo">
             </v-avatar>
-                <p>{{matchupsFromMatchups.schedule.homeTeam.abbreviation}}</p>
+                <p>{{addLogos()}} {{matchupsFromMatchups.schedule.homeTeam.abbreviation}}</p>
             </div>
             <div class="date">
                 <p>{{matchupsFromMatchups.schedule.venue.name}}</p>
@@ -41,13 +41,18 @@ import nbaTeams from '@/assets/nbaTeams.json'
             }
         },
         mounted(){
-            for (var i=0; i<30; i++){
+            this.addLogos();     
+        },
+        methods:{
+            addLogos: function(){
+                for (var i=0; i<30; i++){
                 if(this.matchupsFromMatchups.schedule.homeTeam.abbreviation == nbaTeams.teams[i].abbrev){
                    this.homerLogo=nbaTeams.teams[i].imgURL
                 } else if(this.matchupsFromMatchups.schedule.awayTeam.abbreviation == nbaTeams.teams[i].abbrev){
                    this.awayLogo=nbaTeams.teams[i].imgURL
                 }
             }      
+            }
         },
         filters: {
             readableDate: function (value) {
@@ -88,6 +93,7 @@ import nbaTeams from '@/assets/nbaTeams.json'
         display: flex;
         flex-direction: column;
         height: 100px;
+        width: 120px;
     }
 
 

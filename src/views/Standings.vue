@@ -47,20 +47,6 @@ export default {
         })
       }
   },
-
-// psuedo code: Take the abbreviation of the current NBA team being created. Search the JSON of nbateam objects for the same abbreviation. When you find the
-// matching object, take the URL of that object and return it. 
-
-  //     correctLogo: function(){
-  //       for (var i=0; i<nbaTeams.teams.length; i++){
-  //               if (nbaTeams.teams[i].abbrev == this.rankedTeams[i].team.abbreviation) {
-  //                 console.log("theres a match")
-  //               }
-  //           }   
-  //           console.log(this.currentTeam)
-  //           return 'https://www.gstatic.com/webp/gallery3/1_webp_ll.sm.png' 
-  //     }
-  // },
   mounted(){
     fetch('https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/standings.json', {
             method: 'GET',
@@ -72,7 +58,7 @@ export default {
             return test.json();
         })
         .then(standingData => {
-          console.log(standingData)
+       
           this.currentStandings=standingData.teams
         }).catch(error => console.log(error));
   }
