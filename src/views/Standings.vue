@@ -8,14 +8,23 @@
                 <v-flex xs12 sm6 offset-sm3>
                     <v-card>
                         <v-list subheader>
-                            <v-subheader class="cyan--text">2018-2019</v-subheader>
+                            <v-subheader class="cyan--text">2018-2019 
+                              <v-btn small class="cyan--text" round> Conference</v-btn>
+                              <v-btn small class="cyan--text" round> Playoffs</v-btn>
+                            </v-subheader>
                              <v-divider> </v-divider>
-                             <div v-for="(one, index) in rankedTeams" :key="index" avatar>
-       
-                                <eachRank :standingsFromStandings="one">  </eachRank>
-
-                            </div>
-                            
+                             <div v-if="isReady">
+                                   <div v-for="(one, index) in rankedTeams" :key="index" avatar>
+                                     <eachRank :standingsFromStandings="one">  </eachRank>
+                                   </div>
+                             </div>
+                         
+                             <div v-else>
+                               <v-progress-circular
+                                  indeterminate
+                                  color="primary"
+                                ></v-progress-circular>
+                             </div>
                         </v-list>
                        
                     </v-card>
@@ -33,7 +42,8 @@ import eachRank from '@/components/eachRank.vue'
 export default {
   data(){
     return{
-      currentStandings: []
+      currentStandings: [],
+      isReady: false
     }
   },
   components:{
@@ -58,8 +68,9 @@ export default {
             return test.json();
         })
         .then(standingData => {
-       
+          console.log(standingData.teams)
           this.currentStandings=standingData.teams
+          this.isReady=true;
         }).catch(error => console.log(error));
   }
 }
