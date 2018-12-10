@@ -14,8 +14,7 @@
             </div>
             <div class="date">
                 <p>{{matchupsFromMatchups.schedule.venue.name}}</p>
-                <p>{{matchupsFromMatchups.schedule.startTime | readableDate }}</p>
-                <p>{{matchupsFromMatchups.schedule.startTime | readableTime }}</p>
+                <p>{{ new Date(matchupsFromMatchups.schedule.startTime).toString().slice(16,25) }}</p>
             </div>
             <div class="logo">
                 <v-avatar size=55>
@@ -92,7 +91,8 @@ import nbaTeams from '@/assets/nbaTeams.json'
     .date{
         display: flex;
         flex-direction: column;
-        height: 100px;
+        justify-content: center;
+        height: 120px;
         width: 120px;
     }
 
