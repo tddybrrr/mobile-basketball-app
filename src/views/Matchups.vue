@@ -1,11 +1,10 @@
 <template>
   <div class="matchups">
     <v-container>
-      <v-card class="mb-1">
+      <v-card  class="mb-1">
         <h1 class="display-5">Matchups </h1>
       </v-card>
-
-      <v-menu :close-on-content-click="false" v-model="menu" lazy transition="scale-transition">
+      <v-menu :close-on-content-click="false" v-model="menu"  transition="scale-transition">
         <v-text-field slot="activator" :label="getTheDate(todaysMatchups[0].schedule.startTime)" append-icon="date_range"
           readonly>
         </v-text-field>
@@ -13,7 +12,6 @@
           <v-btn color="black" class="cyan--text" @click="fetchData()">GO !</v-btn>
         </v-date-picker>
       </v-menu>
-
       <p>{{todaysMatchups.length + ' games this day.' }}</p>
       <div v-if="isReady">
         <v-card color="cyan">
@@ -25,10 +23,7 @@
         </v-card>
       </div>
       <div v-else>
-        <v-progress-circular
-          indeterminate
-          color="primary"
-        ></v-progress-circular>
+        <v-progress-circular indeterminate color="primary"></v-progress-circular>
       </div>
     </v-container>
     <NavBar />
@@ -50,7 +45,7 @@
     },
     methods: {
       fetchData: function () {
-        this.isReady=false;
+        this.isReady = false;
         var url = 'https://api.mysportsfeeds.com/v2.0/pull/nba/2018-2019-regular/date/' + this.date.replace(/-/g, "") +
           '/games.json'
         fetch(url, {
@@ -65,13 +60,13 @@
           .then(matchupData => {
             this.todaysMatchups = matchupData.games
             console.log(this.isReady)
-            this.isReady=true;
+            this.isReady = true;
           }).catch(error => console.log(error));
         this.menu = false
       },
       getTheDate: function (someDate) {
         var todaysDate = new Date(someDate);
-       
+
         return todaysDate.toDateString();
       }
     },

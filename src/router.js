@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Matchups from './views/Matchups.vue'
 import LandingPage from './views/LandingPage.vue'
 
 Vue.use(Router);
@@ -16,7 +15,7 @@ export default new Router({
     {
       path: '/matchups',
       name: 'matchups',
-      component: Matchups
+      component: () => import(/* webpackChunkName: "about" */ './views/Matchups.vue')
     },
     {
       path: '/standings',

@@ -7,8 +7,11 @@
             <v-list-tile-content>
                 <v-list-tile-title>{{standingsFromStandings.overallRank.rank}} </v-list-tile-title>
                 <v-list-tile-title >{{standingsFromStandings.team.name}}</v-list-tile-title>
+                <div class="hidden-sm-and-down">
+                    <p v-if="standingsFromStandings.overallRank.gamesBack != 0">Games back: {{standingsFromStandings.overallRank.gamesBack}}<p/>
+                    
+                    </div>
             </v-list-tile-content>
-
             <v-list-tile-action>
                 <v-icon>info</v-icon>
             </v-list-tile-action>
