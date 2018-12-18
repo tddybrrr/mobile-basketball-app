@@ -2,7 +2,7 @@
   <div class="standings">
     <v-content>
       <v-container>
-        <v-card class="mb-1">
+        <v-card :raised="$vuetify.breakpoint.xsOnly" class="mb-1">
           <h1 class="display-5">Season Standings </h1>
         </v-card>
       
